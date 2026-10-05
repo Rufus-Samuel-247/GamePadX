@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GamePadX input packet v1",
+  "oneOf": [
+    {
+      "type": "object",
+      "required": ["type", "timestamp", "buttons", "leftStick", "rightStick", "triggers"],
+      "properties": {
+        "type": { "const": "input" },
+        "timestamp": { "type": "integer", "minimum": 1 },
+        "buttons": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": ["A", "B", "X", "Y", "L1", "R1", "Start", "Select", "Home", "Up", "Down", "Left", "Right", "L3", "R3"]
+          },
+          "maxItems": 16
+        },
+        "leftStick": { "$ref": "#/$defs/stick" },
+        "rightStick": { "$ref": "#/$defs/stick" },
+        "triggers": {
+          "type": "object",
+          "required": ["L2", "R2"],
+          "properties": {
+            "L2": { "type": "number", "minimum": 0, "maximum": 1 },
+            "R2": { "type": "number", "minimum": 0, "maximum": 1 }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "required": ["type", "timestamp"],
+      "properties": {
+        "type": { "const": "ping" },
+        "timestamp": { "type": "integer", "minimum": 1 }
+      },
+      "additionalProperties": false
+    }
+  ],
+  "$defs": {
+    "stick": {
+      "type": "object",
+      "required": ["x", "y"],
+      "properties": {
+        "x": { "type": "number", "minimum": -1, "maximum": 1 },
+        "y": { "type": "number", "minimum": -1, "maximum": 1 }
+      },
+      "additionalProperties": false
+    }
+  }
+}
