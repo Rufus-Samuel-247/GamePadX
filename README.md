@@ -26,7 +26,7 @@ QR scanning, saved/editable profiles, haptics, a dedicated input testing view, a
 Clone the repository:
 
 ```powershell
-git clone https://github.com/<your-account>/GamePadX.git
+git clone https://github.com/Rufus-Samuel-247/GamePadX.git
 cd GamePadX
 ```
 
