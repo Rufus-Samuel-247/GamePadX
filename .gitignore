@@ -1,0 +1,24 @@
+# Android / Gradle
+.gradle/
+**/build/
+local.properties
+.idea/
+*.iml
+
+# .NET
+**/bin/
+**/obj/
+*.user
+*.suo
+
+# Local credentials and machine state
+.env
+.env.*
+!.env.example
+*.jks
+*.keystore
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/*.log
